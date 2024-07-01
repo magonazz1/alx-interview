@@ -1,33 +1,24 @@
-#!/usr/bin/python3
-'''
-Making Pascal's Triangle
-'''
-
-
-def pascal_triangle(n):
+def island_perimeter(grid):
     '''
-    func: pascal_triangle
-        returns a list of lists of integers
-        representing the Pascal’s triangle of n
+    func: island_perimeter
+        returns the perimeter of the island described in grid
     args:
-        <int: n> : number of rows (> 0)
+        <list of list of ints: grid> : binary matrix representation of the island
     return:
-        <list <of list>>
+        <int>
     '''
-    triangle = []
+    perimeter = 0
+    rows = len(grid)
+    cols = len(grid[0]) if rows > 0 else 0
 
-    if n <= 0:
-        return triangle
+    for i in range(rows):
+        for j in range(cols):
+            if grid[i][j] == 1:
+                perimeter += 4
+                if i > 0 and grid[i-1][j] == 1:
+                    perimeter -= 2
+                if j > 0 and grid[i][j-1] == 1:
+                    perimeter -= 2
 
-    triangle.append([1])
+    return perimeter
 
-    for i in range(1, n):
-        row = [1]
-
-        for j in range(1, i):
-            row.append(triangle[i-1][j-1] + triangle[i-1][j])
-
-        row.append(1)
-        triangle.append(row)
-
-    return triangle
