@@ -5,9 +5,11 @@
 
 """
 
+
 def minOperations(n):
     """
-        A function that calculates the fewest number of operations needed to giv        e a result of exactly n H characters in a file
+        A function that calculates the fewest number of operations needed to
+        give a result of exactly n H characters in a file
         args: n: Number of characters to be displayed
 
         return:
@@ -19,7 +21,7 @@ def minOperations(n):
     count = 0
     while now < n:
         rem = n - now
-        if ( rem % now == 0):
+        if (rem % now == 0):
             start = now
             now += start
             count += 2
@@ -27,5 +29,3 @@ def minOperations(n):
             now += start
             count += 1
     return count
-
-
